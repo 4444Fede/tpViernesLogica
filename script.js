@@ -1,3 +1,13 @@
+// 1) Escribir una funcion que cumpla con los siguientes casos de prueba:
+// sum(1,2) => 3
+// sum(1)(2) => 3
+// sum(1,a) => “second parameter is not a number”
+// sum(1)(a) => “second parameter is not a number”
+
+console.log('')
+console.log('Exercise 1')
+console.log('')
+
 function sum(number1, number2) {
   if (number2 !== undefined) {
     if (typeof number2 !== "number") {
@@ -19,6 +29,17 @@ console.log(sum(1, 2));
 console.log(sum(1)(2));
 console.log(sum(1, a));
 console.log(sum(1)(a));
+
+// 2) Dada una lista de usuarios con su historial de logueo. Escribir una funcion que determine si algun usuario fue logueado dentro de los ultimos 30 minutos
+//  La funcion debe recibir un parametro:
+//    - `users`: un array de objetos, donde cada objeto tiene las siguientes propiedades:
+//      - `id` (integer)
+//      - `login_time` (datetime): tiempo en el cual el usuario se logueo por ultima vez en formato fecha
+// La funcion debe retornar true si un usuario se logueo en los ultimos 30 minutos
+
+console.log('')
+console.log('Exercise 2')
+console.log('')
 
 function hasLoggedInLast30Minutes(users) {
   const now = new Date();
@@ -48,6 +69,15 @@ const users = [
 ];
 
 console.log(hasLoggedInLast30Minutes(users));
+
+// 3) Escribir una funcion que determine si 2 strings son un anagrama
+// Ignorar espacios en los strings
+// No diferenciar entre mayusculas y minusculas
+// Retornar true si es anagrama y false de lo contrario
+
+console.log('')
+console.log('Exercise 3')
+console.log('')
 
 function areAnagrams(str1, str2) {
   const deleteSpaces = (str) => {
@@ -90,3 +120,14 @@ function areAnagrams(str1, str2) {
 console.log(areAnagrams("    Lis ten   ", "S i le nt    "));
 console.log(areAnagrams("  Heal lo ", " Oliel h    "));
 console.log(areAnagrams("A pple ", "   P le a    p "));
+
+// 4) Escribir una funcion generadora de una contraseña segura. Debe recibir un numero y generar una contraseña de esa longitud que cumpla con las siguientes consignas:
+// Al menos una mayuscula
+// Al menos una minuscula
+// Al menos un numero
+// Al menos un caracter especial
+// Debe retornar la contraseña generada
+
+console.log('')
+console.log('Exercise 4')
+console.log('')
