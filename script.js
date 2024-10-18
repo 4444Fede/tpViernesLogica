@@ -48,3 +48,45 @@ const users = [
 ];
 
 console.log(hasLoggedInLast30Minutes(users));
+
+function areAnagrams(str1, str2) {
+  const deleteSpaces = (str) => {
+    str.trim();
+    let copyStr = "";
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === " ") {
+        continue;
+      }
+      copyStr += str[i];
+    }
+    return copyStr;
+  };
+  str1 = deleteSpaces(str1);
+  str2 = deleteSpaces(str2);
+  if (str1.length != str2.length) {
+    return false;
+  }
+  str1 = str1.toLowerCase();
+  str2 = str2.toLowerCase();
+  let equalsCount = 0;
+  let anagramLength = str1.length;
+  let str2Arr = str2.split("");
+  for (let char of str1) {
+    for (i = 0; i < str2Arr.length; i++) {
+      if (char === str2Arr[i]) {
+        console.log(str2Arr);
+        str2Arr[i] = "";
+        equalsCount++;
+        console.log(str2Arr);
+        break;
+      }
+    }
+    if (equalsCount === anagramLength) {
+      return true;
+    }
+  }
+  return false;
+}
+console.log(areAnagrams("    Lis ten   ", "S i le nt    "));
+console.log(areAnagrams("  Heal lo ", " Oliel h    "));
+console.log(areAnagrams("A pple ", "   P le a    p "));
