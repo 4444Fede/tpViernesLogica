@@ -4,9 +4,9 @@
 // sum(1,a) => “second parameter is not a number”
 // sum(1)(a) => “second parameter is not a number”
 
-console.log('')
-console.log('Exercise 1')
-console.log('')
+console.log("");
+console.log("Exercise 1");
+console.log("");
 
 function sum(number1, number2) {
   if (number2 !== undefined) {
@@ -37,9 +37,9 @@ console.log(sum(1)(a));
 //      - `login_time` (datetime): tiempo en el cual el usuario se logueo por ultima vez en formato fecha
 // La funcion debe retornar true si un usuario se logueo en los ultimos 30 minutos
 
-console.log('')
-console.log('Exercise 2')
-console.log('')
+console.log("");
+console.log("Exercise 2");
+console.log("");
 
 function hasLoggedInLast30Minutes(users) {
   const now = new Date();
@@ -75,9 +75,9 @@ console.log(hasLoggedInLast30Minutes(users));
 // No diferenciar entre mayusculas y minusculas
 // Retornar true si es anagrama y false de lo contrario
 
-console.log('')
-console.log('Exercise 3')
-console.log('')
+console.log("");
+console.log("Exercise 3");
+console.log("");
 
 function areAnagrams(str1, str2) {
   const deleteSpaces = (str) => {
@@ -128,6 +128,159 @@ console.log(areAnagrams("A pple ", "   P le a    p "));
 // Al menos un caracter especial
 // Debe retornar la contraseña generada
 
-console.log('')
-console.log('Exercise 4')
-console.log('')
+console.log("");
+console.log("Exercise 4");
+console.log("");
+
+function generateSecurePassword(length) {
+  if (length < 4) {
+    return "Password length must be at least 4 characters.";
+  }
+
+  const upperCaseLetters = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+
+  const lowerCaseLetters = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+
+  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  const specialCharacters = [
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "-",
+    "_",
+    "=",
+    "+",
+    "{",
+    "}",
+    "[",
+    "]",
+    ":",
+    ";",
+    '"',
+    "'",
+    "<",
+    ">",
+    ",",
+    ".",
+    "?",
+    "/",
+    "|",
+    "~",
+    "`",
+  ];
+
+  const allCharacters = [
+    ...upperCaseLetters,
+    ...lowerCaseLetters,
+    ...numbers,
+    ...specialCharacters,
+  ];
+
+  const passwordArray = [];
+
+  passwordArray.push(
+    upperCaseLetters[Math.floor(Math.random() * upperCaseLetters.length)]
+  );
+  passwordArray.push(
+    lowerCaseLetters[Math.floor(Math.random() * lowerCaseLetters.length)]
+  );
+  passwordArray.push(numbers[Math.floor(Math.random() * numbers.length)]);
+  passwordArray.push(
+    specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
+  );
+
+  for (let i = 4; i < length; i++) {
+    passwordArray.push(
+      allCharacters[Math.floor(Math.random() * allCharacters.length)]
+    );
+  }
+
+  const shufflePassword = (password) => {
+    for (let i = password.length - 1; i > 0; i--) {
+      let rand = Math.floor(Math.random() * (i + 1));
+      let temporary = password[i];
+      password[i] = password[rand];
+      password[rand] = temporary;
+    }
+    return password;
+  };
+
+  const shuffledPassword = shufflePassword(passwordArray);
+
+  const passwordToString = (password) => {
+    let strPassword = "";
+    for (let i = 0; i < password.length; i++) {
+      strPassword += password[i];
+    }
+    return strPassword;
+  };
+
+  return passwordToString(shuffledPassword);
+}
+
+console.log(generateSecurePassword(4));
+console.log(generateSecurePassword(-15));
+console.log(generateSecurePassword(100));
+console.log(generateSecurePassword(13));
